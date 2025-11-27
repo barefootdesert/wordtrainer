@@ -1,0 +1,1 @@
+ссылка на репозиторий: git@github.com:barefootdesert/wordtrainer.git/
