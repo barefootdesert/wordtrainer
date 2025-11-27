@@ -1,1 +1,1 @@
-ссылка на репозиторий: git@github.com:barefootdesert/wordtrainer.git/
+ссылка на репозиторий: https://github.com/barefootdesert/wordtrainer?tab=readme-ov-file
