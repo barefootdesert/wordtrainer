@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тренажёр слов</title>
+
+    <!-- React и Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            text-align: center;
+        }
+        .word {
+            font-size: 32px;
+            margin: 20px;
+            font-weight: bold;
+        }
+        .translation {
+            font-size: 24px;
+            margin: 20px;
+            color: #444;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Тренажёр слов</h2>
+<div id="root"></div>
+
+<script type="text/babel">
+
+function WordTrainer() {
+    const words = [
+        { word: "never", translation: "...gonna give you up, never gonna let you down" },
+        { word: "apple", translation: "яблоко" },
+        { word: "house", translation: "дом" },
+        { word: "water", translation: "вода" },
+        { word: "sun", translation: "солнце" },
+        { word: "fire", translation: "огонь" },
+        { word: "dog", translation: "собака" }
+    ];
+
+    const getRandom = () => words[Math.floor(Math.random() * words.length)];
+
+    const [current, setCurrent] = React.useState(getRandom());
+    const [show, setShow] = React.useState(false);
+
+    const nextWord = () => {
+        setCurrent(getRandom());
+        setShow(false);
+    };
+
+    return (
+        <div>
+            <div className="word">{current.word}</div>
+
+            {show && (
+                <div className="translation">{current.translation}</div>
+            )}
+
+            <button onClick={() => setShow(true)}>
+                Показать перевод
+            </button>
+
+            <button onClick={nextWord}>
+                Другое слово
+            </button>
+        </div>
+    );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<WordTrainer />);
+
+</script>
+
+</body>
+</html>
